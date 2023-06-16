@@ -1,9 +1,9 @@
 const { Router } = require("express");
 const router = Router();
 //const middleware = require("../config/middleware");
-const OddNumbersController = require("../controllers/OddNumbersController");
+const GetHistoricalController = require("../controllers/GetHistoricalController");
 
 //METODO LISTAR//
-router.get("/odd-numbers/:number", OddNumbersController.list);
+router.post("/historical/", GetHistoricalController.list);
 
 module.exports = router;

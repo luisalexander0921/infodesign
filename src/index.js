@@ -6,6 +6,11 @@ const path = require("path");
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
+const connectDB = require('./../config/database');
+
+//
+// Llama a la función connectDB para establecer la conexión a la base de datos
+
 global.server = server;
 app.use(fileUpload());
 
@@ -22,10 +27,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(express.json());
-require('../config/database');
-
-app.use('/', require('../routes/get-repositories'));
-app.use('/', require('../routes/odd-numbers'));
+//require('../config/database');
+connectDB();
+app.use('/', require('../routes/get-historical'));
 
 
 app.listen(3000);
